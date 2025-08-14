@@ -1,14 +1,19 @@
 import streamlit as st
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
+
+# LangChain imports
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
-from langchain.vectorstores import FAISS
-from langchain.chat_models import ChatOpenAI
+from langchain_community.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
+from langchain_community.llms import HuggingFaceHub
+
+# Your custom HTML templates
 from htmltemplate import css, bot_template, user_template
-from langchain.llms import HuggingFaceHub
+
 
 def get_pdf_text(pdf_docs):
     text = ""
